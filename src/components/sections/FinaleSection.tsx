@@ -28,7 +28,7 @@ export function FinaleSection() {
             "radial-gradient(120% 80% at 50% 62%, oklch(0.3 0.06 300) 0%, oklch(0.18 0.035 288) 38%, var(--ink) 78%)",
         }}
       />
-      <ParallaxLayer speed={0.3} depth="background" mouse={10} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.3} depth="background" driftX={50} rotate={4} mouse={10} className="pointer-events-none absolute inset-0">
         <div className="animate-glow-pulse absolute left-1/2 top-[58%] h-[52vmax] w-[52vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sun-halo opacity-40" />
       </ParallaxLayer>
       <ParallaxLayer
@@ -43,6 +43,7 @@ export function FinaleSection() {
       <ParallaxLayer
         speed={-0.18}
         depth="foreground"
+        driftX={-40}
         mouse={50}
         className="pointer-events-none absolute inset-x-0 bottom-[-10%] h-[22%] bg-ridge-front"
         style={{

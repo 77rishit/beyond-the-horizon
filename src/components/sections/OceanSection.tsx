@@ -74,20 +74,20 @@ export function OceanSection() {
         mouse={4}
         className="bg-ocean-deep absolute inset-x-0 -top-1/2 h-[200%]"
       />
-      <ParallaxLayer speed={0.38} depth="background" mouse={9} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.38} depth="background" driftX={45} mouse={9} className="pointer-events-none absolute inset-0">
         <div className="animate-haze-slow absolute -top-[10%] left-[14%] h-[85%] w-[16vw] -rotate-6 bg-lagoon/20 blur-2xl" />
         <div className="animate-haze-alt absolute -top-[10%] left-[52%] h-[75%] w-[10vw] rotate-3 bg-lagoon/16 blur-2xl" />
         <div className="animate-haze absolute -top-[10%] right-[10%] h-[70%] w-[13vw] rotate-8 bg-lagoon/8 blur-2xl" />
       </ParallaxLayer>
 
       {/* BACKGROUND — distant creatures */}
-      <ParallaxLayer speed={0.28} depth="background" mouse={12} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.28} depth="background" blur={3.5} driftX={95} rotate={2} mouse={12} className="pointer-events-none absolute inset-0">
         <Whale className="animate-float-drift absolute left-[8%] top-[24%] w-[38vw] text-lagoon/25" />
         <Whale className="animate-float-drift absolute right-[6%] top-[52%] w-[22vw] -scale-x-100 text-lagoon/16 [animation-delay:-6s]" />
       </ParallaxLayer>
 
       {/* MIDGROUND — bubbles */}
-      <ParallaxLayer speed={0.06} mouse={28} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.06} driftX={-35} mouse={28} className="pointer-events-none absolute inset-0">
         {bubbles.map((b) => (
           <Bubble key={b.left} {...b} />
         ))}
@@ -97,6 +97,8 @@ export function OceanSection() {
       <ParallaxLayer
         speed={-0.22}
         depth="foreground"
+        driftX={-45}
+        rotate={1.5}
         mouse={56}
         className="pointer-events-none absolute inset-x-0 bottom-[-6%] h-[46%]"
       >

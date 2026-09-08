@@ -7,6 +7,9 @@ const RIDGES = [
   {
     key: "far",
     speed: 0.42,
+    depth: "background" as const,
+    driftX: 34,
+    blur: 2.6,
     mouse: 8,
     className: "h-[40%] bg-ridge-far",
     clip:
@@ -15,6 +18,9 @@ const RIDGES = [
   {
     key: "mid",
     speed: 0.22,
+    depth: "midground" as const,
+    driftX: 22,
+    blur: 1.1,
     mouse: 16,
     className: "h-[34%] bg-ridge-mid",
     clip:
@@ -23,6 +29,9 @@ const RIDGES = [
   {
     key: "near",
     speed: 0.06,
+    depth: "midground" as const,
+    driftX: 10,
+    blur: 0,
     mouse: 26,
     className: "h-[26%] bg-ridge-near",
     clip:
@@ -61,6 +70,8 @@ export function HeroSection() {
       <ParallaxLayer
         speed={0.3}
         depth="background"
+        driftX={45}
+        zoom={0.05}
         mouse={6}
         className="pointer-events-none absolute inset-0 flex items-start justify-center"
       >
@@ -71,7 +82,7 @@ export function HeroSection() {
       </ParallaxLayer>
 
       {/* ---------- MIDGROUND (medium) ---------- */}
-      <ParallaxLayer speed={0.22} mouse={12} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.22} driftX={90} blur={1.2} mouse={12} className="pointer-events-none absolute inset-0">
         <div className="animate-haze absolute inset-x-[-10%] top-[24%] h-[70px] rounded-full bg-cream/8 blur-3xl" />
         <div className="animate-haze-alt absolute inset-x-[-10%] top-[42%] h-[60px] bg-ember/12 blur-2xl" />
         <div className="animate-haze-slow absolute inset-x-[-10%] top-[52%] h-[80px] bg-ember-soft/12 blur-2xl" />
@@ -82,6 +93,9 @@ export function HeroSection() {
         <ParallaxLayer
           key={ridge.key}
           speed={ridge.speed}
+          depth={ridge.depth}
+          driftX={ridge.driftX}
+          blur={ridge.blur}
           mouse={ridge.mouse}
           className={`pointer-events-none absolute inset-x-0 bottom-0 ${ridge.className}`}
           style={{ clipPath: ridge.clip }}
@@ -92,6 +106,7 @@ export function HeroSection() {
       <ParallaxLayer
         speed={-0.04}
         depth="foreground"
+        driftX={-25}
         mouse={34}
         className="pointer-events-none absolute inset-x-[-4%] bottom-[8%]"
       >
@@ -113,6 +128,8 @@ export function HeroSection() {
       <ParallaxLayer
         speed={-0.16}
         depth="foreground"
+        driftX={-45}
+        rotate={0.6}
         mouse={52}
         className="pointer-events-none absolute inset-x-[-6%] bottom-[-4%]"
       >

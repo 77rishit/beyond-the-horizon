@@ -49,25 +49,25 @@ export function SpaceSection() {
         mouse={3}
         className="bg-space-void absolute inset-x-0 -top-1/2 h-[200%]"
       />
-      <ParallaxLayer speed={0.4} depth="background" mouse={6} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.4} depth="background" blur={0} driftX={40} mouse={6} className="pointer-events-none absolute inset-0">
         <Stars seed={2.3} count={90} maxSize={1.6} opacity={0.5} />
       </ParallaxLayer>
-      <ParallaxLayer speed={0.32} depth="background" mouse={10} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.32} depth="background" driftX={-55} rotate={5} mouse={10} className="pointer-events-none absolute inset-0">
         <div className="animate-glow-pulse absolute left-[22%] top-[30%] h-[60vh] w-[60vh] -translate-x-1/2 rounded-full bg-nebula-1/25 blur-[110px]" />
         <div className="animate-glow-pulse absolute right-[8%] top-[54%] h-[50vh] w-[50vh] rounded-full bg-nebula-2/20 blur-[110px] [animation-delay:-3s]" />
       </ParallaxLayer>
 
       {/* MIDGROUND — planets */}
-      <ParallaxLayer speed={0.18} mouse={20} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.18} driftX={65} rotate={3} blur={1} mouse={20} className="pointer-events-none absolute inset-0">
         <div className="absolute right-[12%] top-[16%] h-[26vh] w-[26vh] rounded-full bg-[radial-gradient(circle_at_32%_30%,var(--nebula-2),var(--void)_78%)] shadow-[inset_-18px_-10px_40px_oklch(0.09_0.02_285/0.9)]" />
         <div className="absolute left-[9%] top-[62%] h-[12vh] w-[12vh] rounded-full bg-[radial-gradient(circle_at_35%_28%,var(--nebula-1),var(--void)_80%)]" />
       </ParallaxLayer>
-      <ParallaxLayer speed={0.06} mouse={30} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.06} driftX={-30} mouse={30} className="pointer-events-none absolute inset-0">
         <Stars seed={7.7} count={45} maxSize={2.4} opacity={0.85} />
       </ParallaxLayer>
 
       {/* FOREGROUND — drifting satellite + astronaut, fastest */}
-      <ParallaxLayer speed={-0.24} depth="foreground" mouse={58} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={-0.24} depth="foreground" driftX={-80} rotate={-6} mouse={58} className="pointer-events-none absolute inset-0">
         <div className="animate-float-drift absolute left-[12%] top-[26%]">
           <div className="relative h-6 w-6 rounded-sm bg-cream/80">
             <span className="absolute -left-10 top-1 h-3 w-9 bg-nebula-2/70" />

@@ -105,7 +105,7 @@ export function CitySection() {
         mouse={4}
         className="bg-city-sky absolute inset-x-0 -top-1/2 h-[200%]"
       />
-      <ParallaxLayer speed={0.36} depth="background" mouse={8} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.36} depth="background" driftX={55} mouse={8} className="pointer-events-none absolute inset-0">
         <div className="animate-glow-pulse absolute left-[18%] top-[46%] h-[46vh] w-[46vh] -translate-x-1/2 rounded-full bg-neon-magenta/20 blur-[90px]" />
         <div className="animate-glow-pulse absolute right-[12%] top-[38%] h-[38vh] w-[38vh] rounded-full bg-neon-cyan/15 blur-[90px]" />
       </ParallaxLayer>
@@ -126,13 +126,14 @@ export function CitySection() {
       </ParallaxLayer>
 
       {/* MIDGROUND — flying vehicles + mid towers */}
-      <ParallaxLayer speed={0.12} mouse={22} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.12} driftX={130} mouse={22} className="pointer-events-none absolute inset-0">
         <FlyingVehicle top="26%" duration={17} delay={0} scale={0.7} />
         <FlyingVehicle top="38%" duration={23} delay={5} scale={0.5} reverse />
         <FlyingVehicle top="18%" duration={29} delay={11} scale={0.4} />
       </ParallaxLayer>
       <ParallaxLayer
         speed={0.02}
+        driftX={-25}
         mouse={30}
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[74%]"
       >
@@ -148,6 +149,7 @@ export function CitySection() {
       <ParallaxLayer
         speed={-0.2}
         depth="foreground"
+        driftX={-60}
         mouse={52}
         className="pointer-events-none absolute inset-x-0 bottom-[-8%] h-[86%]"
       >
