@@ -6,7 +6,7 @@ import { ParallaxSection } from "@/components/parallax/ParallaxSection";
 const RIDGES = [
   {
     key: "far",
-    speed: 0.42,
+    speed: 0.5,
     depth: "background" as const,
     driftX: 34,
     blur: 2,
@@ -17,7 +17,7 @@ const RIDGES = [
   },
   {
     key: "mid",
-    speed: 0.22,
+    speed: 0.28,
     depth: "midground" as const,
     driftX: 22,
     blur: 0,
@@ -28,7 +28,7 @@ const RIDGES = [
   },
   {
     key: "near",
-    speed: 0.06,
+    speed: 0.08,
     depth: "midground" as const,
     driftX: 10,
     blur: 0,
@@ -55,12 +55,19 @@ const BLADES = Array.from({ length: 44 }, (_, i) => {
   return { x, h, lean, key: `b${i}` };
 });
 
+/** Named planes shown in the hero legend. */
+const LEGEND = [
+  { label: "Background", factor: "0.5\u00d7", width: "w-4" },
+  { label: "Midground", factor: "0.9\u00d7", width: "w-7" },
+  { label: "Foreground", factor: "1.3\u00d7", width: "w-10" },
+];
+
 export function HeroSection() {
   return (
     <ParallaxSection id="top" className="bg-ink" scrollLength="170vh">
       {/* ---------- BACKGROUND (slowest) ---------- */}
       <ParallaxLayer
-        speed={0.38}
+        speed={0.55}
         depth="background"
         zoom={0.08}
         mouse={4}
@@ -104,7 +111,7 @@ export function HeroSection() {
 
       {/* Tree line — closer midground */}
       <ParallaxLayer
-        speed={-0.04}
+        speed={-0.1}
         depth="foreground"
         driftX={-25}
         mouse={34}
@@ -126,17 +133,17 @@ export function HeroSection() {
 
       {/* ---------- FOREGROUND (fastest) ---------- */}
       <ParallaxLayer
-        speed={-0.16}
+        speed={-0.26}
         depth="foreground"
         driftX={-45}
         rotate={0.6}
         mouse={52}
-        className="pointer-events-none absolute inset-x-[-6%] bottom-[-4%]"
+        className="pointer-events-none absolute inset-x-[-6%] bottom-[-14%]"
       >
         <svg
           viewBox="0 0 1440 200"
           preserveAspectRatio="none"
-          className="h-[24vh] w-full min-h-[140px]"
+          className="h-[30vh] w-full min-h-[170px]"
         >
           {/* grass blades catching the last light */}
           <g className="fill-ridge-front">
@@ -188,6 +195,27 @@ export function HeroSection() {
         <div className="animate-rise mt-9" style={{ animationDelay: "0.7s" }}>
           <CinematicButton href="#journey">BEGIN THE JOURNEY</CinematicButton>
         </div>
+      </ParallaxLayer>
+
+      {/* Depth legend — names the three planes the moment the page opens. */}
+      <ParallaxLayer
+        speed={0}
+        fadeOver={420}
+        className="pointer-events-none absolute bottom-8 left-6 z-30 hidden flex-col gap-2 md:flex lg:left-12"
+      >
+        <span className="font-mono text-[9px] uppercase tracking-[0.35em] text-cream/40">
+          Three planes, three speeds
+        </span>
+        {LEGEND.map((plane) => (
+          <span
+            key={plane.label}
+            className="flex items-center gap-2.5 font-mono text-[9px] uppercase tracking-[0.28em] text-cream/60"
+          >
+            <span className={`h-px ${plane.width} bg-ember/70`} />
+            {plane.label}
+            <span className="text-ember-soft/80">{plane.factor}</span>
+          </span>
+        ))}
       </ParallaxLayer>
 
       <ParallaxLayer
