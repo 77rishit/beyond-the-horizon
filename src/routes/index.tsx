@@ -1,24 +1,57 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteNav } from "@/components/SiteNav";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { ChapterSection } from "@/components/sections/ChapterSection";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Beyond the Horizon — A Cinematic Parallax Journey" },
+      {
+        name: "description",
+        content:
+          "Scroll to enter a world in motion: a cinematic, layered parallax journey through ridgelines, haze and a rising horizon.",
+      },
+      { property: "og:title", content: "Beyond the Horizon — A Cinematic Parallax Journey" },
+      {
+        property: "og:description",
+        content:
+          "Scroll to enter a world in motion: a cinematic, layered parallax journey through ridgelines, haze and a rising horizon.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="relative bg-ink">
+      <SiteNav />
+      <main>
+        <HeroSection />
+        {/* Add more <ChapterSection /> stages here to extend the journey. */}
+        <ChapterSection
+          id="journey"
+          index="Chapter I"
+          title="THE JOURNEY"
+          line="Every ridge you cross rewrites the distance to the next one."
+        />
+        <ChapterSection
+          id="worlds"
+          index="Chapter II"
+          title="THE WORLDS"
+          line="Layered terrains that drift apart as you move deeper into the frame."
+          mirrored
+        />
+        <ChapterSection
+          id="explore"
+          index="Chapter III"
+          title="EXPLORE"
+          line="The horizon is not an edge. It is an invitation."
+        />
+      </main>
     </div>
   );
 }
