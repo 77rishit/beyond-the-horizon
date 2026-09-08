@@ -46,7 +46,7 @@ function LearnCard({ card, index, inView }: { card: Card; index: number; inView:
   return (
     <article
       className={cn(
-        "group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-cream/10 bg-cream/[0.04] p-6 backdrop-blur-md",
+        "group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-cream/10 bg-cream/[0.06] p-6 md:bg-cream/[0.04] md:backdrop-blur-md",
         "transition-[opacity,transform,border-color,background-color] duration-700 ease-[var(--ease-cinematic)]",
         "hover:-translate-y-1.5 hover:border-ember-soft/40 hover:bg-cream/[0.07] hover:shadow-[0_18px_50px_-18px_rgba(0,0,0,0.7)]",
         inView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",

@@ -68,7 +68,8 @@ export function ScrollProgress() {
               <li key={stage.id}>
                 <a
                   href={`#${stage.id}`}
-                  className="group flex items-center gap-3"
+                  aria-label={stage.num ? `${stage.num} ${stage.label}` : stage.label}
+                  className="group flex min-h-11 items-center gap-3 py-1"
                   aria-current={isActive ? "true" : undefined}
                 >
                   <span
@@ -91,7 +92,7 @@ export function ScrollProgress() {
                     )}
                   </span>
 
-                  <span className="hidden flex-col md:flex">
+                  <span aria-hidden className="hidden flex-col md:flex">
                     <span
                       className={cn(
                         "font-mono text-[10px] uppercase tracking-[0.3em] transition-all duration-500",
@@ -99,7 +100,7 @@ export function ScrollProgress() {
                           ? "text-cream opacity-100"
                           : found
                             ? "text-cream/65 opacity-90"
-                            : "text-cream/40 opacity-70",
+                            : "text-cream/60 opacity-90",
                       )}
                     >
                       {stage.num ? `${stage.num} ${stage.label}` : stage.label}
@@ -107,9 +108,10 @@ export function ScrollProgress() {
                     {/* Quiet detail: the note only surfaces on hover, once found. */}
                     <span
                       className={cn(
-                        "max-w-[16ch] overflow-hidden text-[10px] font-light leading-tight text-cream/45",
+                        "max-w-[16ch] overflow-hidden text-[10px] font-light leading-tight text-cream/60",
                         "max-h-0 opacity-0 transition-all duration-500 ease-[var(--ease-cinematic)]",
-                        found && "group-hover:mt-1 group-hover:max-h-8 group-hover:opacity-100",
+                        found &&
+                          "group-hover:mt-1 group-hover:max-h-8 group-hover:opacity-100 group-focus-visible:mt-1 group-focus-visible:max-h-8 group-focus-visible:opacity-100",
                       )}
                     >
                       {stage.note}
@@ -124,7 +126,7 @@ export function ScrollProgress() {
         <div className="mt-8 hidden md:block">
           <span className="block font-mono text-[10px] uppercase tracking-[0.3em] text-cream/70">
             World {String(Math.max(activeWorld, 0)).padStart(2, "0")}{" "}
-            <span className="text-cream/35">/ {String(WORLDS.length).padStart(2, "0")}</span>
+            <span className="text-cream/50">/ {String(WORLDS.length).padStart(2, "0")}</span>
           </span>
           <span className="mt-2 flex gap-1.5">
             {WORLDS.map((w) => (

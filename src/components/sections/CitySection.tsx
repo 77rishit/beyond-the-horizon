@@ -106,8 +106,8 @@ export function CitySection() {
         className="bg-city-sky absolute inset-x-0 -top-1/2 h-[200%]"
       />
       <ParallaxLayer speed={0.36} depth="background" driftX={55} mouse={8} className="pointer-events-none absolute inset-0">
-        <div className="animate-glow-pulse absolute left-[18%] top-[46%] h-[46vh] w-[46vh] -translate-x-1/2 rounded-full bg-neon-magenta/20 blur-[90px]" />
-        <div className="animate-glow-pulse absolute right-[12%] top-[38%] h-[38vh] w-[38vh] rounded-full bg-neon-cyan/15 blur-[90px]" />
+        <div className="animate-glow-pulse absolute left-[18%] top-[46%] h-[46vh] w-[46vh] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,var(--neon-magenta),transparent_72%)] opacity-25" />
+        <div className="animate-glow-pulse absolute right-[12%] top-[38%] h-[38vh] w-[38vh] rounded-full bg-[radial-gradient(closest-side,var(--neon-cyan),transparent_72%)] opacity-20" />
       </ParallaxLayer>
 
       {/* BACKGROUND buildings — slowest */}

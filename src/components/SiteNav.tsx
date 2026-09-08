@@ -31,12 +31,12 @@ export function SiteNav() {
       >
         BEYOND
       </a>
-      <nav className="flex shrink-0 items-center gap-4 font-mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground sm:gap-9 sm:text-[11px] sm:tracking-[0.28em]">
+      <nav aria-label="Sections" className="flex shrink-0 items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground sm:gap-9 sm:text-[11px] sm:tracking-[0.28em]">
         {links.map((link) => (
           <a
             key={link.href}
             href={link.href}
-            className="relative py-1 transition-colors duration-300 hover:text-cream after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-ember after:transition-transform after:duration-500 after:ease-[var(--ease-cinematic)] hover:after:origin-left hover:after:scale-x-100"
+            className="relative min-h-11 py-3 leading-none transition-colors duration-300 hover:text-cream after:absolute after:bottom-2 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-ember after:transition-transform after:duration-500 after:ease-[var(--ease-cinematic)] hover:after:origin-left hover:after:scale-x-100"
           >
             {link.label}
           </a>

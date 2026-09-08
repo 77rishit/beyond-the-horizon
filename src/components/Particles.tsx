@@ -21,7 +21,10 @@ export function Particles() {
         {dots.map((d, i) => (
           <span
             key={i}
-            className="animate-particle absolute rounded-full bg-cream"
+            className={
+              // Phones carry a lighter dust count — same feel, fewer painted layers.
+              `animate-particle absolute rounded-full bg-cream${i >= 12 ? " hidden md:block" : ""}`
+            }
             style={{
               left: d.left,
               top: d.top,

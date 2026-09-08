@@ -39,12 +39,18 @@ function Index() {
   return (
     <JourneyProvider>
       <div className="relative bg-ink">
+        <a
+          href="#main"
+          className="sr-only left-4 top-4 z-[110] bg-ink px-4 py-3 font-mono text-[11px] uppercase tracking-[0.25em] text-cream focus:not-sr-only focus:fixed"
+        >
+          Skip to content
+        </a>
         <Preloader />
         <Particles />
         <SiteNav />
         <ScrollProgress />
         <WorldToast />
-        <main>
+        <main id="main" tabIndex={-1}>
           <HeroSection />
           {/* Add more <ChapterSection /> stages here to extend the journey. */}
           <ChapterSection

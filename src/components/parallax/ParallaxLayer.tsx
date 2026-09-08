@@ -83,7 +83,7 @@ export function ParallaxLayer({
   }, [speed, driftX, rotate, zoom, fadeOver, flipX, resolvedMouse, resolvedBlur, resolvedInertia]);
 
   return (
-    <div ref={ref} aria-hidden={children ? undefined : true} className={cn("will-change-transform", className)} style={style}>
+    <div ref={ref} aria-hidden={children ? undefined : true} className={cn(className)} style={style}>
       {children}
     </div>
   );
