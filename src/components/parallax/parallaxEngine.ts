@@ -20,7 +20,7 @@ export type LayerConfig = {
   mouse: number;
 };
 
-type Layer = LayerConfig & { el: HTMLElement };
+type Layer = LayerConfig & { el: HTMLElement; stage: HTMLElement | null };
 
 const layers = new Set<Layer>();
 
@@ -39,16 +39,25 @@ function render() {
   smoothX += (pointerX - smoothX) * 0.08;
   smoothY += (pointerY - smoothY) * 0.08;
 
+  // read phase: how far each stage has been scrolled into
+  const stageProgress = new Map<HTMLElement, number>();
   for (const layer of layers) {
-    const y = scrollY * layer.speed + smoothY * layer.mouse;
+    if (layer.stage && !stageProgress.has(layer.stage)) {
+      stageProgress.set(layer.stage, -layer.stage.getBoundingClientRect().top);
+    }
+  }
+
+  for (const layer of layers) {
+    const local = layer.stage ? (stageProgress.get(layer.stage) ?? 0) : scrollY;
+    const y = local * layer.speed + smoothY * layer.mouse;
     const x = smoothX * layer.mouse;
-    const scale = 1 + (scrollY / 1000) * layer.zoom;
+    const scale = 1 + (local / 1000) * layer.zoom;
     const sx = layer.flipX ? -scale : scale;
 
     layer.el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) scale(${sx.toFixed(4)}, ${scale.toFixed(4)})`;
 
     if (layer.fadeOver > 0) {
-      layer.el.style.opacity = String(Math.max(0, 1 - scrollY / layer.fadeOver));
+      layer.el.style.opacity = String(Math.max(0, 1 - Math.max(0, local) / layer.fadeOver));
     }
   }
 
@@ -90,7 +99,8 @@ function start() {
 }
 
 export function registerLayer(el: HTMLElement, config: LayerConfig) {
-  const layer: Layer = { el, ...config };
+  const stage = el.closest<HTMLElement>("[data-parallax-stage]");
+  const layer: Layer = { el, stage, ...config };
   layers.add(layer);
   start();
   schedule();

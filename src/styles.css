@@ -50,6 +50,27 @@
   --color-ridge-near: var(--ridge-near);
   --color-ridge-front: var(--ridge-front);
 
+  /* City */
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-magenta: var(--neon-magenta);
+  --color-city-far: var(--city-far);
+  --color-city-mid: var(--city-mid);
+  --color-city-near: var(--city-near);
+  --color-city-front: var(--city-front);
+
+  /* Ocean */
+  --color-abyss: var(--abyss);
+  --color-abyss-2: var(--abyss-2);
+  --color-lagoon: var(--lagoon);
+  --color-kelp: var(--kelp);
+  --color-coral: var(--coral);
+
+  /* Space */
+  --color-void: var(--void);
+  --color-star: var(--star);
+  --color-nebula-1: var(--nebula-1);
+  --color-nebula-2: var(--nebula-2);
+
   --font-display: "Bebas Neue", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -106,6 +127,45 @@
     oklch(0.775 0.115 62 / 0.25) 42%,
     transparent 68%
   );
+  --neon-cyan: oklch(0.86 0.13 200);
+  --neon-magenta: oklch(0.72 0.2 340);
+  --city-far: oklch(0.3 0.05 285);
+  --city-mid: oklch(0.235 0.045 285);
+  --city-near: oklch(0.175 0.035 282);
+  --city-front: oklch(0.115 0.025 280);
+
+  --abyss: oklch(0.13 0.045 250);
+  --abyss-2: oklch(0.24 0.075 235);
+  --lagoon: oklch(0.62 0.1 205);
+  --kelp: oklch(0.28 0.06 190);
+  --coral: oklch(0.68 0.13 30);
+
+  --void: oklch(0.09 0.02 285);
+  --star: oklch(0.97 0.01 250);
+  --nebula-1: oklch(0.55 0.16 300);
+  --nebula-2: oklch(0.6 0.12 220);
+
+  --gradient-city: linear-gradient(
+    to bottom,
+    oklch(0.11 0.02 280) 0%,
+    oklch(0.22 0.06 300) 42%,
+    oklch(0.36 0.09 330) 70%,
+    oklch(0.2 0.05 285) 100%
+  );
+  --gradient-ocean: linear-gradient(
+    to bottom,
+    oklch(0.36 0.09 225) 0%,
+    oklch(0.24 0.075 235) 35%,
+    oklch(0.16 0.055 245) 68%,
+    oklch(0.1 0.035 250) 100%
+  );
+  --gradient-space: radial-gradient(
+    120% 90% at 30% 25%,
+    oklch(0.26 0.1 300) 0%,
+    oklch(0.15 0.06 290) 35%,
+    oklch(0.09 0.02 285) 72%
+  );
+
   --gradient-sun-core: radial-gradient(
     circle,
     oklch(0.975 0.028 85) 0%,
@@ -177,6 +237,98 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes fly-across {
+  0% {
+    transform: translateX(-12vw);
+    opacity: 0;
+  }
+  8%,
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(112vw);
+    opacity: 0;
+  }
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-90vh) translateX(18px);
+    opacity: 0;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes float-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-4deg);
+  }
+  50% {
+    transform: translate3d(14px, -18px, 0) rotate(4deg);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@utility animate-fly {
+  animation: fly-across 18s linear infinite;
+}
+
+@utility animate-bubble {
+  animation: bubble-rise 14s linear infinite;
+}
+
+@utility animate-twinkle {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+@utility animate-float-drift {
+  animation: float-drift 16s ease-in-out infinite;
+}
+
+@utility animate-sway {
+  animation: sway 9s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@utility bg-city-sky {
+  background: var(--gradient-city);
+}
+
+@utility bg-ocean-deep {
+  background: var(--gradient-ocean);
+}
+
+@utility bg-space-void {
+  background: var(--gradient-space);
 }
 
 @utility animate-haze {
