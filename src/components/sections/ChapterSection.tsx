@@ -19,6 +19,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
     <ParallaxSection id={id} className="bg-ink">
       <ParallaxLayer
         speed={0.3}
+        mouse={4}
         className="absolute inset-0"
         style={{
           background:
@@ -32,6 +33,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
 
       <ParallaxLayer
         speed={0.12}
+        mouse={26}
         flipX={mirrored === true}
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%] bg-ridge-near"
         style={{
@@ -40,7 +42,8 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
         }}
       />
       <ParallaxLayer
-        speed={0}
+        speed={-0.18}
+        mouse={48}
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[14%] bg-ridge-front"
         style={{
           clipPath:
@@ -50,6 +53,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
 
       <ParallaxLayer
         speed={0.1}
+        mouse={16}
         className="relative z-20 mx-auto flex min-h-[100svh] max-w-4xl flex-col items-center justify-center px-6 text-center"
       >
         <span className="font-mono text-[10px] uppercase tracking-[0.45em] text-ember-soft/70">
