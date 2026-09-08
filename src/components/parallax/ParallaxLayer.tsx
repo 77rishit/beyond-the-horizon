@@ -6,10 +6,11 @@ import { registerLayer } from "./parallaxEngine";
 export type Depth = "background" | "midground" | "foreground";
 
 const DEPTH: Record<Depth, { blur: number; inertia: number; mouse: number }> = {
-  // far away: heavy, floaty, slightly out of focus
-  background: { blur: 2.5, inertia: 0.055, mouse: 8 },
+  // far away: heavy and floaty (softness is opted into per layer, since a
+  // full-screen filter is the single most expensive thing we can paint)
+  background: { blur: 0, inertia: 0.055, mouse: 8 },
   // middle distance: balanced
-  midground: { blur: 0.8, inertia: 0.1, mouse: 22 },
+  midground: { blur: 0, inertia: 0.1, mouse: 22 },
   // close to camera: sharp and responsive
   foreground: { blur: 0, inertia: 0.2, mouse: 46 },
 };
