@@ -298,6 +298,93 @@
   }
 }
 
+@keyframes particle-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.8);
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: var(--particle-opacity, 0.5);
+  }
+  100% {
+    transform: translate3d(22px, -120px, 0) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+@keyframes loader-line {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes loader-out {
+  0% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes letter-in {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) rotateX(-55deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+@utility animate-particle {
+  animation: particle-float 18s linear infinite;
+}
+
+@utility animate-shine {
+  animation: shine-sweep 1.1s var(--ease-cinematic);
+}
+
+@utility animate-loader-line {
+  animation: loader-line 1.15s var(--ease-cinematic) forwards;
+}
+
+@utility animate-loader-out {
+  animation: loader-out 0.9s var(--ease-cinematic) forwards;
+}
+
+@utility animate-letter-in {
+  animation: letter-in 0.95s var(--ease-cinematic) both;
+}
+
+@utility perspective-scene {
+  perspective: 900px;
+  perspective-origin: 50% 45%;
+}
+
+@utility glass-panel {
+  background: color-mix(in oklab, var(--ink) 55%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid color-mix(in oklab, var(--cream) 12%, transparent);
+}
+
 @utility animate-fly {
   animation: fly-across 18s linear infinite;
 }
