@@ -94,7 +94,7 @@ function DepthDemo({ inView }: { inView: boolean }) {
   return (
     <figure
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-cream/10 bg-cream/[0.04] p-6 transition-[opacity,transform] duration-1000 ease-[var(--ease-cinematic)]",
+        "relative self-start overflow-hidden rounded-2xl border border-cream/10 bg-cream/[0.04] p-6 transition-[opacity,transform] duration-1000 ease-[var(--ease-cinematic)]",
         inView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
       )}
       style={{ transitionDelay: inView ? "80ms" : "0ms" }}
@@ -130,6 +130,12 @@ function DepthDemo({ inView }: { inView: boolean }) {
           </div>
         ))}
       </div>
+
+      <p className="mt-6 border-t border-cream/10 pt-5 text-sm font-light leading-relaxed text-cream/70">
+        Same scroll, three multipliers. The rails separate as you move — and that
+        separation is the only thing your eye needs to read one flat screen as
+        near, middle and far.
+      </p>
     </figure>
   );
 }
@@ -177,7 +183,7 @@ export function LearnSection() {
 
         <div
           className={cn(
-            "mt-10 flex flex-col items-center gap-4 transition-[opacity,transform] duration-1000 ease-[var(--ease-cinematic)] sm:flex-row sm:justify-center",
+            "mx-auto mt-12 flex max-w-3xl flex-col items-center gap-4 transition-[opacity,transform] duration-1000 ease-[var(--ease-cinematic)]",
             inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
           )}
           style={{ transitionDelay: inView ? "680ms" : "0ms" }}
