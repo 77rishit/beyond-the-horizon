@@ -26,7 +26,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
             "linear-gradient(to bottom, var(--ink) 0%, var(--ridge-mid) 55%, var(--ink) 100%)",
         }}
       />
-      <ParallaxLayer speed={0.24} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.24} mouse={12} className="pointer-events-none absolute inset-0">
         <div className="animate-haze absolute inset-x-[-6%] top-[38%] h-[70px] bg-ember/10 blur-3xl" />
         <div className="animate-haze-alt absolute inset-x-[-6%] top-[58%] h-[90px] bg-ember-soft/10 blur-3xl" />
       </ParallaxLayer>
@@ -44,7 +44,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
       <ParallaxLayer
         speed={-0.18}
         mouse={48}
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[14%] bg-ridge-front"
+        className="pointer-events-none absolute inset-x-0 bottom-[-12%] h-[26%] bg-ridge-front"
         style={{
           clipPath:
             "polygon(0% 100%, 0% 62%, 18% 46%, 36% 64%, 54% 48%, 72% 65%, 88% 50%, 100% 62%, 100% 100%)",
