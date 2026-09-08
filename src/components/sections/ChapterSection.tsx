@@ -32,11 +32,10 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
 
       <ParallaxLayer
         speed={0.12}
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%] bg-ridge-near"
+        className={`pointer-events-none absolute inset-x-0 bottom-0 h-[30%] bg-ridge-near ${mirrored ? "-scale-x-100" : ""}`}
         style={{
           clipPath:
             "polygon(0% 100%, 0% 58%, 15% 44%, 30% 62%, 47% 42%, 63% 63%, 80% 46%, 100% 60%, 100% 100%)",
-          transform: mirrored ? "scaleX(-1)" : undefined,
         }}
       />
       <ParallaxLayer
