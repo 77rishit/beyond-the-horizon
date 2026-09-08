@@ -1,3 +1,4 @@
+import { CinematicButton } from "@/components/CinematicButton";
 import { ParallaxLayer } from "@/components/parallax/ParallaxLayer";
 import { ParallaxSection } from "@/components/parallax/ParallaxSection";
 
@@ -163,19 +164,9 @@ export function HeroSection() {
         >
           Scroll to enter a world in motion.
         </p>
-        <a
-          href="#journey"
-          className="group animate-rise mt-9 inline-flex items-center gap-3 border border-cream/25 bg-ink/20 px-6 py-4 font-mono text-[10px] uppercase tracking-[0.25em] text-cream transition-colors duration-500 hover:border-ember hover:text-ember-soft sm:px-8 sm:text-[11px] sm:tracking-[0.3em]"
-          style={{ animationDelay: "0.7s" }}
-        >
-          BEGIN THE JOURNEY
-          <span
-            aria-hidden="true"
-            className="transition-transform duration-500 group-hover:translate-x-1.5"
-          >
-            &#8594;
-          </span>
-        </a>
+        <div className="animate-rise mt-9" style={{ animationDelay: "0.7s" }}>
+          <CinematicButton href="#journey">BEGIN THE JOURNEY</CinematicButton>
+        </div>
       </ParallaxLayer>
 
       <ParallaxLayer

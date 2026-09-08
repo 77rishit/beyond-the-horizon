@@ -17,11 +17,16 @@ export function SceneCopy({ index, title, line, accentClassName, className }: Sc
   const step = (delay: number) =>
     cn(
       "transition-[opacity,transform] duration-1000 ease-[var(--ease-cinematic)]",
-      inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
+      inView
+        ? "[transform:translateY(0)_rotateX(0deg)_scale(1)] opacity-100"
+        : "[transform:translateY(2rem)_rotateX(-38deg)_scale(0.96)] opacity-0",
     ) + ` [transition-delay:${delay}ms]`;
 
   return (
-    <div ref={ref} className={cn("flex flex-col items-center text-center", className)}>
+    <div ref={ref} className={cn(
+        "perspective-scene flex flex-col items-center text-center [transform-style:preserve-3d]",
+        className,
+      )}>
       <span
         className={cn(
           "font-mono text-[10px] uppercase tracking-[0.45em]",

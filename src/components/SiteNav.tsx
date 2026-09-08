@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+
 const links = [
   { label: "Journey", href: "#journey" },
   { label: "City", href: "#city" },
@@ -6,11 +9,25 @@ const links = [
 ];
 
 export function SiteNav() {
+  const [lifted, setLifted] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setLifted(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-40 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-5 md:px-12 md:py-7">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-40 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 transition-all duration-700 ease-[var(--ease-cinematic)] md:px-12",
+        lifted ? "glass-panel py-3 md:py-4" : "py-5 md:py-7",
+      )}
+    >
       <a
         href="#top"
-        className="animate-rise truncate font-display text-xl tracking-[0.3em] text-cream md:text-2xl"
+        className="animate-rise group truncate font-display text-xl tracking-[0.3em] text-cream transition-colors duration-500 hover:text-ember-soft md:text-2xl"
       >
         BEYOND
       </a>
@@ -19,7 +36,7 @@ export function SiteNav() {
           <a
             key={link.href}
             href={link.href}
-            className="transition-colors duration-300 hover:text-cream"
+            className="relative py-1 transition-colors duration-300 hover:text-cream after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-ember after:transition-transform after:duration-500 after:ease-[var(--ease-cinematic)] hover:after:origin-left hover:after:scale-x-100"
           >
             {link.label}
           </a>
