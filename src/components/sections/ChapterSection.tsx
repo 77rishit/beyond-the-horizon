@@ -20,7 +20,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
       <ParallaxLayer
         speed={0.3}
         mouse={4}
-        className="absolute inset-0"
+        className="absolute inset-x-0 -top-1/2 h-[200%]"
         style={{
           background:
             "linear-gradient(to bottom, var(--ink) 0%, var(--ridge-mid) 55%, var(--ink) 100%)",
@@ -42,7 +42,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
         }}
       />
       <ParallaxLayer
-        speed={-0.18}
+        speed={-0.14}
         mouse={48}
         className="pointer-events-none absolute inset-x-0 bottom-[-12%] h-[26%] bg-ridge-front"
         style={{
