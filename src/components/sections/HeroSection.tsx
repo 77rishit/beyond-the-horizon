@@ -47,7 +47,7 @@ const BLADES = Array.from({ length: 44 }, (_, i) => {
 
 export function HeroSection() {
   return (
-    <ParallaxSection id="top" className="bg-ink">
+    <ParallaxSection id="top" className="bg-ink" scrollLength="220vh">
       {/* ---------- BACKGROUND (slowest) ---------- */}
       <ParallaxLayer
         speed={0.6}
@@ -142,7 +142,7 @@ export function HeroSection() {
         speed={0.16}
         fadeOver={620}
         mouse={20}
-        className="relative z-20 flex min-h-[100svh] flex-col items-center justify-center px-6 text-center"
+        className="relative z-20 flex h-full flex-col items-center justify-center px-6 text-center"
       >
         <p
           className="animate-rise mb-5 font-mono text-[10px] uppercase tracking-[0.35em] text-ember-soft/80 sm:tracking-[0.45em] md:text-xs"

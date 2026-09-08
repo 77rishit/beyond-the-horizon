@@ -16,7 +16,7 @@ type ChapterSectionProps = {
  */
 export function ChapterSection({ id, index, title, line, mirrored }: ChapterSectionProps) {
   return (
-    <ParallaxSection id={id} className="bg-ink">
+    <ParallaxSection id={id} className="bg-ink" scrollLength="170vh">
       <ParallaxLayer
         speed={0.3}
         mouse={4}
@@ -54,7 +54,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
       <ParallaxLayer
         speed={0.1}
         mouse={16}
-        className="relative z-20 mx-auto flex min-h-[100svh] max-w-4xl flex-col items-center justify-center px-6 text-center"
+        className="relative z-20 mx-auto flex h-full max-w-4xl flex-col items-center justify-center px-6 text-center"
       >
         <span className="font-mono text-[10px] uppercase tracking-[0.45em] text-ember-soft/70">
           {index}
