@@ -1,49 +1,51 @@
-import type { CSSProperties, ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { useScrollY } from "./useScrollY";
+import { registerLayer } from "./parallaxEngine";
 
 type ParallaxLayerProps = {
-  /** 0 = pinned to page, 1 = moves a full viewport-scroll with the page. */
+  /** Vertical scroll factor. >0 = distant, 0 = locked to page, <0 = foreground (fastest). */
   speed?: number;
-  /** Optional additional scale applied as the page scrolls. */
+  /** Extra scale added per 1000px of scroll. */
   zoom?: number;
   /** Fade the layer out over this many pixels of scroll. */
   fadeOver?: number;
   /** Mirror the layer horizontally. */
   flipX?: boolean;
+  /** Pixels of pointer-driven drift on desktop. Bigger = closer to camera. */
+  mouse?: number;
   className?: string;
   style?: CSSProperties;
   children?: ReactNode;
 };
 
 /**
- * A single depth plane. Compose several with different `speed` values
- * inside a ParallaxSection to build a scene.
+ * A single depth plane. Compose several with different `speed` / `mouse`
+ * values inside a ParallaxSection to build a scene.
  */
 export function ParallaxLayer({
   speed = 0.2,
   zoom = 0,
-  fadeOver,
+  fadeOver = 0,
   flipX = false,
+  mouse = 0,
   className,
   style,
   children,
 }: ParallaxLayerProps) {
-  const scrollY = useScrollY();
-  const offset = scrollY * speed;
-  const scale = 1 + (scrollY / 1000) * zoom;
-  const opacity =
-    fadeOver && fadeOver > 0 ? Math.max(0, 1 - scrollY / fadeOver) : undefined;
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    return registerLayer(el, { speed, zoom, fadeOver, flipX, mouse });
+  }, [speed, zoom, fadeOver, flipX, mouse]);
 
   return (
     <div
+      ref={ref}
       aria-hidden={children ? undefined : true}
       className={cn("will-change-transform", className)}
-      style={{
-        ...style,
-        opacity,
-        transform: `translate3d(0, ${offset.toFixed(2)}px, 0) scale(${(flipX ? -scale : scale).toFixed(4)}, ${scale.toFixed(4)})`,
-      }}
+      style={{ ...style, transform: flipX ? "scaleX(-1)" : undefined }}
     >
       {children}
     </div>
