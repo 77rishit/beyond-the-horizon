@@ -26,6 +26,7 @@ export function ParallaxSection({
   if (!scrollLength) {
     return (
       <section
+        data-parallax-stage=""
         id={id}
         className={cn("relative min-h-[100svh] w-full overflow-hidden", className)}
       >
@@ -35,7 +36,7 @@ export function ParallaxSection({
   }
 
   return (
-    <section id={id} className={cn("relative w-full", className)} style={{ height: scrollLength }}>
+    <section data-parallax-stage="" id={id} className={cn("relative w-full", className)} style={{ height: scrollLength }}>
       <div className="sticky top-0 h-[100svh] w-full overflow-hidden">{children}</div>
     </section>
   );
