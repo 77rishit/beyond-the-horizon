@@ -5,6 +5,9 @@ import { ChapterSection } from "@/components/sections/ChapterSection";
 import { CitySection } from "@/components/sections/CitySection";
 import { OceanSection } from "@/components/sections/OceanSection";
 import { SpaceSection } from "@/components/sections/SpaceSection";
+import { FinaleSection } from "@/components/sections/FinaleSection";
+import { Preloader } from "@/components/Preloader";
+import { Particles } from "@/components/Particles";
 import { ScrollProgress } from "@/components/ScrollProgress";
 
 export const Route = createFileRoute("/")({
@@ -32,6 +35,8 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="relative bg-ink">
+      <Preloader />
+      <Particles />
       <SiteNav />
       <ScrollProgress />
       <main>
@@ -46,6 +51,7 @@ function Index() {
         <CitySection />
         <OceanSection />
         <SpaceSection />
+        <FinaleSection />
       </main>
     </div>
   );

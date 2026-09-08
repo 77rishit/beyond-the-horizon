@@ -18,8 +18,8 @@ export function SceneCopy({ index, title, line, accentClassName, className }: Sc
     cn(
       "transition-[opacity,transform] duration-1000 ease-[var(--ease-cinematic)]",
       inView
-        ? "translate-y-0 rotate-x-0 scale-100 opacity-100"
-        : "translate-y-8 [transform:translateY(2rem)_rotateX(-38deg)_scale(0.96)] opacity-0",
+        ? "[transform:translateY(0)_rotateX(0deg)_scale(1)] opacity-100"
+        : "[transform:translateY(2rem)_rotateX(-38deg)_scale(0.96)] opacity-0",
     ) + ` [transition-delay:${delay}ms]`;
 
   return (
