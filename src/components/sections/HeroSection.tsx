@@ -47,17 +47,17 @@ const BLADES = Array.from({ length: 44 }, (_, i) => {
 
 export function HeroSection() {
   return (
-    <ParallaxSection id="top" className="bg-ink" scrollLength="220vh">
+    <ParallaxSection id="top" className="bg-ink" scrollLength="170vh">
       {/* ---------- BACKGROUND (slowest) ---------- */}
       <ParallaxLayer
-        speed={0.6}
+        speed={0.38}
         zoom={0.08}
         mouse={4}
         className="absolute inset-x-0 -top-1/2 h-[200%] bg-sky-horizon"
       />
 
       <ParallaxLayer
-        speed={0.52}
+        speed={0.3}
         mouse={6}
         className="pointer-events-none absolute inset-0 flex items-start justify-center"
       >
@@ -68,7 +68,7 @@ export function HeroSection() {
       </ParallaxLayer>
 
       {/* ---------- MIDGROUND (medium) ---------- */}
-      <ParallaxLayer speed={0.34} mouse={12} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.22} mouse={12} className="pointer-events-none absolute inset-0">
         <div className="animate-haze absolute inset-x-[-10%] top-[24%] h-[70px] rounded-full bg-cream/8 blur-3xl" />
         <div className="animate-haze-alt absolute inset-x-[-10%] top-[42%] h-[60px] bg-ember/12 blur-2xl" />
         <div className="animate-haze-slow absolute inset-x-[-10%] top-[52%] h-[80px] bg-ember-soft/12 blur-2xl" />
@@ -140,7 +140,7 @@ export function HeroSection() {
       {/* ---------- CONTENT ---------- */}
       <ParallaxLayer
         speed={0.16}
-        fadeOver={620}
+        fadeOver={760}
         mouse={20}
         className="relative z-20 flex h-full flex-col items-center justify-center px-6 text-center"
       >
