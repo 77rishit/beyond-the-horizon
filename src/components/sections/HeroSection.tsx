@@ -55,6 +55,13 @@ const BLADES = Array.from({ length: 44 }, (_, i) => {
   return { x, h, lean, key: `b${i}` };
 });
 
+/** Named planes shown in the hero legend. */
+const LEGEND = [
+  { label: "Background", factor: "0.5\u00d7", width: "w-4" },
+  { label: "Midground", factor: "0.9\u00d7", width: "w-7" },
+  { label: "Foreground", factor: "1.3\u00d7", width: "w-10" },
+];
+
 export function HeroSection() {
   return (
     <ParallaxSection id="top" className="bg-ink" scrollLength="170vh">
@@ -188,6 +195,27 @@ export function HeroSection() {
         <div className="animate-rise mt-9" style={{ animationDelay: "0.7s" }}>
           <CinematicButton href="#journey">BEGIN THE JOURNEY</CinematicButton>
         </div>
+      </ParallaxLayer>
+
+      {/* Depth legend — names the three planes the moment the page opens. */}
+      <ParallaxLayer
+        speed={0}
+        fadeOver={420}
+        className="pointer-events-none absolute bottom-8 left-6 z-30 hidden flex-col gap-2 md:flex lg:left-12"
+      >
+        <span className="font-mono text-[9px] uppercase tracking-[0.35em] text-cream/40">
+          Three planes, three speeds
+        </span>
+        {LEGEND.map((plane) => (
+          <span
+            key={plane.label}
+            className="flex items-center gap-2.5 font-mono text-[9px] uppercase tracking-[0.28em] text-cream/60"
+          >
+            <span className={`h-px ${plane.width} bg-ember/70`} />
+            {plane.label}
+            <span className="text-ember-soft/80">{plane.factor}</span>
+          </span>
+        ))}
       </ParallaxLayer>
 
       <ParallaxLayer
