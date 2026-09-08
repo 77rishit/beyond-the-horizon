@@ -49,6 +49,7 @@ function Index() {
           title="THE JOURNEY"
           line="Every ridge you cross rewrites the distance to the next one."
         />
+        <LearnSection />
         <CitySection />
         <OceanSection />
         <SpaceSection />
