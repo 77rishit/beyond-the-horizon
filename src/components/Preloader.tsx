@@ -11,8 +11,13 @@ export function Preloader() {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     const a = window.setTimeout(() => setLeaving(true), 1350);
+    const b = window.setTimeout(() => {
+      setGone(true);
+      document.body.style.overflow = "";
+    }, 2600);
     return () => {
       window.clearTimeout(a);
+      window.clearTimeout(b);
       document.body.style.overflow = "";
     };
   }, []);
