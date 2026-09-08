@@ -10,6 +10,8 @@ import { FinaleSection } from "@/components/sections/FinaleSection";
 import { Preloader } from "@/components/Preloader";
 import { Particles } from "@/components/Particles";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { JourneyProvider } from "@/components/journey/journey";
+import { WorldToast } from "@/components/journey/WorldToast";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,26 +37,29 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="relative bg-ink">
-      <Preloader />
-      <Particles />
-      <SiteNav />
-      <ScrollProgress />
-      <main>
-        <HeroSection />
-        {/* Add more <ChapterSection /> stages here to extend the journey. */}
-        <ChapterSection
-          id="journey"
-          index="01 — Journey"
-          title="THE JOURNEY"
-          line="Every ridge you cross rewrites the distance to the next one."
-        />
-        <LearnSection />
-        <CitySection />
-        <OceanSection />
-        <SpaceSection />
-        <FinaleSection />
-      </main>
-    </div>
+    <JourneyProvider>
+      <div className="relative bg-ink">
+        <Preloader />
+        <Particles />
+        <SiteNav />
+        <ScrollProgress />
+        <WorldToast />
+        <main>
+          <HeroSection />
+          {/* Add more <ChapterSection /> stages here to extend the journey. */}
+          <ChapterSection
+            id="journey"
+            index="01 — Mountains"
+            title="THE JOURNEY"
+            line="Every ridge you cross rewrites the distance to the next one."
+          />
+          <LearnSection />
+          <CitySection />
+          <OceanSection />
+          <SpaceSection />
+          <FinaleSection />
+        </main>
+      </div>
+    </JourneyProvider>
   );
 }
