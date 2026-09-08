@@ -11,11 +11,11 @@ function makeSkyline(seed: number, count: number, maxHeight: number): Building[]
   for (let i = 0; i < count; i++) {
     const n = Math.abs(Math.sin(seed + i * 12.9898) * 43758.5453) % 1;
     const m = Math.abs(Math.sin(seed + i * 78.233) * 12345.6789) % 1;
-    const width = 3 + n * 6;
+    const width = Number((3 + n * 6).toFixed(3));
     out.push({
-      left: x,
-      width,
-      height: maxHeight * (0.35 + m * 0.65),
+      left: Number(x.toFixed(3)),
+      width: Number(width.toFixed(3)),
+      height: Number((maxHeight * (0.35 + m * 0.65)).toFixed(3)),
       lit: Math.round(n * 6) + 3,
     });
     x += width + 0.6 + n * 2.2;

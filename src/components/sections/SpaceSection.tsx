@@ -9,10 +9,10 @@ function starField(seed: number, count: number, maxSize: number) {
     const b = Math.abs(Math.sin(seed + i * 78.233) * 12345.6789) % 1;
     const c = Math.abs(Math.sin(seed + i * 39.425) * 24634.6345) % 1;
     return {
-      left: `${a * 100}%`,
-      top: `${b * 100}%`,
-      size: 1 + c * maxSize,
-      delay: c * 6,
+      left: `${(a * 100).toFixed(3)}%`,
+      top: `${(b * 100).toFixed(3)}%`,
+      size: Number((1 + c * maxSize).toFixed(3)),
+      delay: Number((c * 6).toFixed(3)),
     };
   });
 }
