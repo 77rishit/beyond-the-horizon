@@ -32,7 +32,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
 
       <ParallaxLayer
         speed={0.12}
-        flipX={mirrored}
+        flipX={mirrored === true}
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%] bg-ridge-near"
         style={{
           clipPath:
