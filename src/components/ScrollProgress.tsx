@@ -6,12 +6,14 @@ const stops = [
   { id: "city", num: "02", label: "City" },
   { id: "ocean", num: "03", label: "Ocean" },
   { id: "space", num: "04", label: "Space" },
+  { id: "finale", num: "05", label: "Return" },
 ];
 
 /** Vertical chapter rail with a scroll-driven progress line. */
 export function ScrollProgress() {
   const [active, setActive] = useState(0);
   const barRef = useRef<HTMLSpanElement>(null);
+  const topRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     let frame = 0;
@@ -20,6 +22,7 @@ export function ScrollProgress() {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
       if (barRef.current) barRef.current.style.transform = `scaleY(${p})`;
+      if (topRef.current) topRef.current.style.transform = `scaleX(${p})`;
 
       const mid = window.innerHeight / 2;
       let next = 0;
@@ -43,7 +46,18 @@ export function ScrollProgress() {
   }, []);
 
   return (
-    <nav
+    <>
+      <span
+        aria-hidden
+        className="pointer-events-none fixed inset-x-0 top-0 z-50 h-[2px] bg-cream/10"
+      >
+        <span
+          ref={topRef}
+          className="block h-full w-full origin-left bg-gradient-to-r from-ember-soft to-ember"
+          style={{ transform: "scaleX(0)" }}
+        />
+      </span>
+      <nav
       aria-label="Journey progress"
       className="fixed right-4 top-1/2 z-40 -translate-y-1/2 md:right-8"
     >
@@ -82,6 +96,7 @@ export function ScrollProgress() {
           </li>
         ))}
       </ul>
-    </nav>
+      </nav>
+    </>
   );
 }
