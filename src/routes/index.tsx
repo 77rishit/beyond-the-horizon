@@ -12,6 +12,7 @@ import { Particles } from "@/components/Particles";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { JourneyProvider } from "@/components/journey/journey";
 import { WorldToast } from "@/components/journey/WorldToast";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -65,6 +66,7 @@ function Index() {
           <SpaceSection />
           <FinaleSection />
         </main>
+        <SiteFooter />
       </div>
     </JourneyProvider>
   );

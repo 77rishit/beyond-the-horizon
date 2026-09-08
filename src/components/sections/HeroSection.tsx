@@ -6,7 +6,7 @@ import { ParallaxSection } from "@/components/parallax/ParallaxSection";
 const RIDGES = [
   {
     key: "far",
-    speed: 0.42,
+    speed: 0.5,
     depth: "background" as const,
     driftX: 34,
     blur: 2,
@@ -17,7 +17,7 @@ const RIDGES = [
   },
   {
     key: "mid",
-    speed: 0.22,
+    speed: 0.28,
     depth: "midground" as const,
     driftX: 22,
     blur: 0,
@@ -28,7 +28,7 @@ const RIDGES = [
   },
   {
     key: "near",
-    speed: 0.06,
+    speed: 0.08,
     depth: "midground" as const,
     driftX: 10,
     blur: 0,
@@ -60,7 +60,7 @@ export function HeroSection() {
     <ParallaxSection id="top" className="bg-ink" scrollLength="170vh">
       {/* ---------- BACKGROUND (slowest) ---------- */}
       <ParallaxLayer
-        speed={0.38}
+        speed={0.55}
         depth="background"
         zoom={0.08}
         mouse={4}
@@ -104,7 +104,7 @@ export function HeroSection() {
 
       {/* Tree line — closer midground */}
       <ParallaxLayer
-        speed={-0.04}
+        speed={-0.1}
         depth="foreground"
         driftX={-25}
         mouse={34}
@@ -126,17 +126,17 @@ export function HeroSection() {
 
       {/* ---------- FOREGROUND (fastest) ---------- */}
       <ParallaxLayer
-        speed={-0.16}
+        speed={-0.26}
         depth="foreground"
         driftX={-45}
         rotate={0.6}
         mouse={52}
-        className="pointer-events-none absolute inset-x-[-6%] bottom-[-4%]"
+        className="pointer-events-none absolute inset-x-[-6%] bottom-[-14%]"
       >
         <svg
           viewBox="0 0 1440 200"
           preserveAspectRatio="none"
-          className="h-[24vh] w-full min-h-[140px]"
+          className="h-[30vh] w-full min-h-[170px]"
         >
           {/* grass blades catching the last light */}
           <g className="fill-ridge-front">
