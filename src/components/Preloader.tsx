@@ -11,13 +11,8 @@ export function Preloader() {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     const a = window.setTimeout(() => setLeaving(true), 1350);
-    const b = window.setTimeout(() => {
-      setGone(true);
-      document.body.style.overflow = "";
-    }, 2250);
     return () => {
       window.clearTimeout(a);
-      window.clearTimeout(b);
       document.body.style.overflow = "";
     };
   }, []);
@@ -30,6 +25,12 @@ export function Preloader() {
       className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink ${
         leaving ? "animate-loader-out" : ""
       }`}
+      onAnimationEnd={(event) => {
+        if (event.animationName.startsWith("loader-out")) {
+          setGone(true);
+          document.body.style.overflow = "";
+        }
+      }}
     >
       <span className="font-display text-3xl tracking-[0.55em] text-cream md:text-5xl">
         BEYOND
