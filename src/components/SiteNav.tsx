@@ -1,7 +1,8 @@
 const links = [
   { label: "Journey", href: "#journey" },
-  { label: "Worlds", href: "#worlds" },
-  { label: "Explore", href: "#explore" },
+  { label: "City", href: "#city" },
+  { label: "Ocean", href: "#ocean" },
+  { label: "Space", href: "#space" },
 ];
 
 export function SiteNav() {

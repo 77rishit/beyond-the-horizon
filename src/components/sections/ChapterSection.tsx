@@ -1,5 +1,7 @@
 import { ParallaxLayer } from "@/components/parallax/ParallaxLayer";
 import { ParallaxSection } from "@/components/parallax/ParallaxSection";
+import { SceneCopy } from "@/components/sections/SceneCopy";
+import { SceneEdges } from "@/components/SceneEdges";
 
 type ChapterSectionProps = {
   id: string;
@@ -54,16 +56,12 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
       <ParallaxLayer
         speed={0.1}
         mouse={16}
-        className="relative z-20 mx-auto flex h-full max-w-4xl flex-col items-center justify-center px-6 text-center"
+        className="relative z-20 mx-auto flex h-full max-w-4xl items-center justify-center px-6"
       >
-        <span className="font-mono text-[10px] uppercase tracking-[0.45em] text-ember-soft/70">
-          {index}
-        </span>
-        <h2 className="mt-5 font-display text-[13vw] leading-[0.9] tracking-[0.04em] text-cream md:text-[7vw]">
-          {title}
-        </h2>
-        <p className="mt-5 max-w-[38ch] text-sm font-light text-cream/70 md:text-base">{line}</p>
+        <SceneCopy index={index} title={title} line={line} />
       </ParallaxLayer>
+
+      <SceneEdges />
     </ParallaxSection>
   );
 }

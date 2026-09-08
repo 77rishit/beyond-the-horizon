@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/SiteNav";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ChapterSection } from "@/components/sections/ChapterSection";
+import { CitySection } from "@/components/sections/CitySection";
+import { OceanSection } from "@/components/sections/OceanSection";
+import { SpaceSection } from "@/components/sections/SpaceSection";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,28 +33,19 @@ function Index() {
   return (
     <div className="relative bg-ink">
       <SiteNav />
+      <ScrollProgress />
       <main>
         <HeroSection />
         {/* Add more <ChapterSection /> stages here to extend the journey. */}
         <ChapterSection
           id="journey"
-          index="Chapter I"
+          index="01 — Journey"
           title="THE JOURNEY"
           line="Every ridge you cross rewrites the distance to the next one."
         />
-        <ChapterSection
-          id="worlds"
-          index="Chapter II"
-          title="THE WORLDS"
-          line="Layered terrains that drift apart as you move deeper into the frame."
-          mirrored
-        />
-        <ChapterSection
-          id="explore"
-          index="Chapter III"
-          title="EXPLORE"
-          line="The horizon is not an edge. It is an invitation."
-        />
+        <CitySection />
+        <OceanSection />
+        <SpaceSection />
       </main>
     </div>
   );
