@@ -387,9 +387,16 @@
 
 @utility glass-panel {
   background: color-mix(in oklab, var(--ink) 55%, transparent);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
   border-bottom: 1px solid color-mix(in oklab, var(--cream) 12%, transparent);
+
+  /* Phones: swap the live blur for a denser tint — same read, far cheaper. */
+  @media (max-width: 767px) {
+    background: color-mix(in oklab, var(--ink) 88%, transparent);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 @utility animate-fly {
@@ -475,15 +482,29 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     -webkit-font-smoothing: antialiased;
+    /* Sideways overflow is contained per stage (each section clips its own
+       layers) — never on html/body, which would break the sticky stages. */
+  }
+
+  /* One consistent, clearly visible keyboard focus ring everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 
   @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
     *,
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 }

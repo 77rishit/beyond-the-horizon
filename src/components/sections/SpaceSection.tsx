@@ -53,8 +53,8 @@ export function SpaceSection() {
         <Stars seed={2.3} count={90} maxSize={1.6} opacity={0.5} />
       </ParallaxLayer>
       <ParallaxLayer speed={0.32} depth="background" driftX={-55} rotate={5} mouse={10} className="pointer-events-none absolute inset-0">
-        <div className="animate-glow-pulse absolute left-[22%] top-[30%] h-[60vh] w-[60vh] -translate-x-1/2 rounded-full bg-nebula-1/25 blur-[110px]" />
-        <div className="animate-glow-pulse absolute right-[8%] top-[54%] h-[50vh] w-[50vh] rounded-full bg-nebula-2/20 blur-[110px] [animation-delay:-3s]" />
+        <div className="animate-glow-pulse absolute left-[22%] top-[30%] h-[60vh] w-[60vh] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,var(--nebula-1),transparent_74%)] opacity-30" />
+        <div className="animate-glow-pulse absolute right-[8%] top-[54%] h-[50vh] w-[50vh] rounded-full bg-[radial-gradient(closest-side,var(--nebula-2),transparent_74%)] opacity-25 [animation-delay:-3s]" />
       </ParallaxLayer>
 
       {/* MIDGROUND — planets */}

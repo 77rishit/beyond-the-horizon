@@ -40,6 +40,7 @@ type Layer = LayerConfig & {
   rot: number;
   scale: number;
   primed: boolean;
+  hinted: boolean;
 };
 
 const layers = new Set<Layer>();
@@ -58,23 +59,46 @@ let blurEnabled = false;
 
 const EPS = 0.01;
 
+/** Reused between frames so the loop allocates nothing. */
+const stageProgress = new Map<HTMLElement, number>();
+const stageVisible = new Map<HTMLElement, boolean>();
+
 function render() {
   frame = 0;
 
   smoothX += (pointerX - smoothX) * 0.07;
   smoothY += (pointerY - smoothY) * 0.07;
 
-  // read phase: how far each stage has been scrolled into
-  const stageProgress = new Map<HTMLElement, number>();
+  // read phase: how far each stage has been scrolled into, and whether it is
+  // anywhere near the viewport (off-screen stages are skipped entirely)
+  stageProgress.clear();
+  stageVisible.clear();
+  const vh = window.innerHeight;
   for (const layer of layers) {
-    if (layer.stage && !stageProgress.has(layer.stage)) {
-      stageProgress.set(layer.stage, -layer.stage.getBoundingClientRect().top);
-    }
+    const stage = layer.stage;
+    if (!stage || stageProgress.has(stage)) continue;
+    const rect = stage.getBoundingClientRect();
+    stageProgress.set(stage, -rect.top);
+    stageVisible.set(stage, rect.bottom > -vh * 0.25 && rect.top < vh * 1.25);
   }
 
   let settling = false;
 
   for (const layer of layers) {
+    const visible = layer.stage ? (stageVisible.get(layer.stage) ?? true) : true;
+    if (!visible) {
+      // Nothing to paint: drop the compositor hint so idle scenes cost no memory.
+      if (layer.hinted) {
+        layer.el.style.willChange = "auto";
+        layer.hinted = false;
+      }
+      continue;
+    }
+    if (!layer.hinted) {
+      layer.el.style.willChange = "transform";
+      layer.hinted = true;
+    }
+
     const local = layer.stage ? (stageProgress.get(layer.stage) ?? 0) : scrollY;
     const k = local / 1000;
 
@@ -148,7 +172,7 @@ function start() {
 
   pointerEnabled = !reduced && desktop;
   blurEnabled = !reduced && wide;
-  motionScale = reduced ? 0 : wide ? 1 : 0.55;
+  motionScale = reduced ? 0 : wide ? 1 : 0.45;
 
   scrollY = window.scrollY;
   window.addEventListener("scroll", onScroll, { passive: true });
@@ -171,6 +195,7 @@ export function registerLayer(el: HTMLElement, config: LayerConfig) {
     rot: 0,
     scale: 1,
     primed: false,
+    hinted: false,
   };
 
   if (config.blur > 0 && blurEnabled) {
@@ -181,5 +206,6 @@ export function registerLayer(el: HTMLElement, config: LayerConfig) {
   schedule();
   return () => {
     layers.delete(layer);
+    el.style.willChange = "auto";
   };
 }

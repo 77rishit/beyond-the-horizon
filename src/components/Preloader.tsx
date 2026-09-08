@@ -43,7 +43,7 @@ export function Preloader() {
       <span className="mt-6 block h-px w-40 origin-left bg-cream/15 md:w-64">
         <span className="animate-loader-line block h-px w-full origin-left bg-ember" />
       </span>
-      <span className="mt-5 font-mono text-[9px] uppercase tracking-[0.4em] text-cream/40">
+      <span className="mt-5 font-mono text-[9px] uppercase tracking-[0.4em] text-cream/60">
         Entering the horizon
       </span>
     </div>
