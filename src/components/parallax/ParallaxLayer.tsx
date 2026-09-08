@@ -9,6 +9,8 @@ type ParallaxLayerProps = {
   zoom?: number;
   /** Fade the layer out over this many pixels of scroll. */
   fadeOver?: number;
+  /** Mirror the layer horizontally. */
+  flipX?: boolean;
   className?: string;
   style?: CSSProperties;
   children?: ReactNode;
@@ -22,6 +24,7 @@ export function ParallaxLayer({
   speed = 0.2,
   zoom = 0,
   fadeOver,
+  flipX = false,
   className,
   style,
   children,
@@ -39,7 +42,7 @@ export function ParallaxLayer({
       style={{
         ...style,
         opacity,
-        transform: `translate3d(0, ${offset.toFixed(2)}px, 0) scale(${scale.toFixed(4)})`,
+        transform: `translate3d(0, ${offset.toFixed(2)}px, 0) scale(${(flipX ? -scale : scale).toFixed(4)}, ${scale.toFixed(4)})`,
       }}
     >
       {children}
