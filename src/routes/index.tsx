@@ -10,6 +10,8 @@ import { FinaleSection } from "@/components/sections/FinaleSection";
 import { Preloader } from "@/components/Preloader";
 import { Particles } from "@/components/Particles";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { JourneyProvider } from "@/components/journey/journey";
+import { WorldToast } from "@/components/journey/WorldToast";
 
 export const Route = createFileRoute("/")({
   head: () => ({
