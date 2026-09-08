@@ -52,6 +52,7 @@ export function HeroSection() {
       {/* ---------- BACKGROUND (slowest) ---------- */}
       <ParallaxLayer
         speed={0.38}
+        depth="background"
         zoom={0.08}
         mouse={4}
         className="absolute inset-x-0 -top-1/2 h-[200%] bg-sky-horizon"
@@ -59,6 +60,7 @@ export function HeroSection() {
 
       <ParallaxLayer
         speed={0.3}
+        depth="background"
         mouse={6}
         className="pointer-events-none absolute inset-0 flex items-start justify-center"
       >
@@ -89,6 +91,7 @@ export function HeroSection() {
       {/* Tree line — closer midground */}
       <ParallaxLayer
         speed={-0.04}
+        depth="foreground"
         mouse={34}
         className="pointer-events-none absolute inset-x-[-4%] bottom-[8%]"
       >
@@ -109,6 +112,7 @@ export function HeroSection() {
       {/* ---------- FOREGROUND (fastest) ---------- */}
       <ParallaxLayer
         speed={-0.16}
+        depth="foreground"
         mouse={52}
         className="pointer-events-none absolute inset-x-[-6%] bottom-[-4%]"
       >

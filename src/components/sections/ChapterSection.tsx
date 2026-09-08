@@ -21,6 +21,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
     <ParallaxSection id={id} className="bg-ink" scrollLength="170vh">
       <ParallaxLayer
         speed={0.3}
+        depth="background"
         mouse={4}
         className="absolute inset-x-0 -top-1/2 h-[200%]"
         style={{
@@ -45,6 +46,7 @@ export function ChapterSection({ id, index, title, line, mirrored }: ChapterSect
       />
       <ParallaxLayer
         speed={-0.14}
+        depth="foreground"
         mouse={48}
         className="pointer-events-none absolute inset-x-0 bottom-[-12%] h-[26%] bg-ridge-front"
         style={{
