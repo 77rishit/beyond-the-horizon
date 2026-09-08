@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/SiteNav";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ChapterSection } from "@/components/sections/ChapterSection";
+import { LearnSection } from "@/components/sections/LearnSection";
 import { CitySection } from "@/components/sections/CitySection";
 import { OceanSection } from "@/components/sections/OceanSection";
 import { SpaceSection } from "@/components/sections/SpaceSection";
