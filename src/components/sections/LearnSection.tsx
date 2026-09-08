@@ -43,9 +43,9 @@ const CARDS: Card[] = [
 
 /** Scroll multipliers shown in the live demo, slowest plane first. */
 const PLANES = [
-  { label: "Background", factor: "0.2×", drift: 70, speed: 0.05, opacity: "opacity-35" },
-  { label: "Midground", factor: "0.6×", drift: 190, speed: 0.02, opacity: "opacity-60" },
-  { label: "Foreground", factor: "1.4×", drift: -420, speed: -0.06, opacity: "opacity-100" },
+  { label: "Background", factor: "0.2×", drift: 70, opacity: "opacity-35" },
+  { label: "Midground", factor: "0.6×", drift: 190, opacity: "opacity-60" },
+  { label: "Foreground", factor: "1.4×", drift: -420, opacity: "opacity-100" },
 ];
 
 const STACK = [
@@ -117,7 +117,7 @@ function DepthDemo({ inView }: { inView: boolean }) {
             </div>
             <div className="relative h-6 overflow-hidden rounded-full border border-cream/10 bg-ink/60">
               <ParallaxLayer
-                speed={plane.speed}
+                speed={0}
                 driftX={plane.drift}
                 mouse={0}
                 className={cn("absolute inset-y-0 -left-[60%] w-[220%]", plane.opacity)}
