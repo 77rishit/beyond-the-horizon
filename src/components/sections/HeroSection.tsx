@@ -9,7 +9,7 @@ const RIDGES = [
     speed: 0.42,
     depth: "background" as const,
     driftX: 34,
-    blur: 2.6,
+    blur: 0,
     mouse: 8,
     className: "h-[40%] bg-ridge-far",
     clip:
@@ -20,7 +20,7 @@ const RIDGES = [
     speed: 0.22,
     depth: "midground" as const,
     driftX: 22,
-    blur: 1.1,
+    blur: 0,
     mouse: 16,
     className: "h-[34%] bg-ridge-mid",
     clip:
@@ -82,7 +82,7 @@ export function HeroSection() {
       </ParallaxLayer>
 
       {/* ---------- MIDGROUND (medium) ---------- */}
-      <ParallaxLayer speed={0.22} driftX={90} blur={1.2} mouse={12} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.22} driftX={90} blur={0.8} mouse={12} className="pointer-events-none absolute inset-0">
         <div className="animate-haze absolute inset-x-[-10%] top-[24%] h-[70px] rounded-full bg-cream/8 blur-3xl" />
         <div className="animate-haze-alt absolute inset-x-[-10%] top-[42%] h-[60px] bg-ember/12 blur-2xl" />
         <div className="animate-haze-slow absolute inset-x-[-10%] top-[52%] h-[80px] bg-ember-soft/12 blur-2xl" />

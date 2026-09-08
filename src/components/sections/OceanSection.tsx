@@ -81,7 +81,7 @@ export function OceanSection() {
       </ParallaxLayer>
 
       {/* BACKGROUND — distant creatures */}
-      <ParallaxLayer speed={0.28} depth="background" blur={3.5} driftX={95} rotate={2} mouse={12} className="pointer-events-none absolute inset-0">
+      <ParallaxLayer speed={0.28} depth="background" blur={2.5} driftX={95} rotate={2} mouse={12} className="pointer-events-none absolute inset-0">
         <Whale className="animate-float-drift absolute left-[8%] top-[24%] w-[38vw] text-lagoon/25" />
         <Whale className="animate-float-drift absolute right-[6%] top-[52%] w-[22vw] -scale-x-100 text-lagoon/16 [animation-delay:-6s]" />
       </ParallaxLayer>
