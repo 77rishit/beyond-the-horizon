@@ -9,7 +9,7 @@ const RIDGES = [
     speed: 0.42,
     depth: "background" as const,
     driftX: 34,
-    blur: 0,
+    blur: 2,
     mouse: 8,
     className: "h-[40%] bg-ridge-far",
     clip:
